@@ -10,7 +10,7 @@ public class ColorChange : MonoBehaviour
 
     private void Start()
     {
-        _healthText.gameObject.SetActive(false);
+        _healthText.gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,12 +23,12 @@ public class ColorChange : MonoBehaviour
         // You don't need to declare 'health' again - just change the value.
         
         // STEP 3 -------------------------------------------------------------
-
+        health -= 1;
         // STEP 4 -------------------------------------------------------------
         // DECLARE a new float value named 'r' with a value of 1.
-        
+        float r = health >= 3 ? 1f : health == 2 ? 0.5f : 0f;
         // STEP 4 -------------------------------------------------------------
-
+        
         // STEP 5 -------------------------------------------------------------
         // Add three more else/if statements to this. 
         // IF health is 3, set the value of 'r' to 1.0.
@@ -40,7 +40,7 @@ public class ColorChange : MonoBehaviour
         }
         
         // When you're done, uncomment the line below.
-        //_spriteRenderer.color = new Color(r, 0.2f, 0.2f);
+        _spriteRenderer.color = new Color(r, 0.2f, 0.2f);
         // STEP 5 -------------------------------------------------------------
 
         _healthText.gameObject.SetActive(true);
@@ -48,7 +48,7 @@ public class ColorChange : MonoBehaviour
         // STEP 6 -------------------------------------------------------------
         // Add the value of heatlh to this string, so that the heatlh text
         //      displays the prop's current health value.
-        _healthText.text = "h = ";
+        _healthText.text = "h = " + health;
         // STEP 6 -------------------------------------------------------------
     }
 }
